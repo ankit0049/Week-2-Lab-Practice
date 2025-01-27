@@ -1,0 +1,39 @@
+package com.ecommerceplatform;
+
+// Class to represent an electronics product
+// Inherits from the Product abstract class and implements the Taxable interface
+class Electronics extends Product implements Taxable {
+
+	// Static field to store the tax rate for electronics products
+	private final double TAX_RATE;
+
+	// Constructor to initialize electronics product details
+	public Electronics(int productId, String name, double price, double TAX_RATE) {
+		// Call the parent class constructor with the provided arguments
+		super(productId, name, price);
+
+		// Assinging the user input tax rate
+		this.TAX_RATE = TAX_RATE;
+	}
+
+	// Override the method to calculate the discount for electronics
+	@Override
+	public double calculateDiscount() {
+		// Calculate a 10% discount on the price of the electronics product
+		return getPrice() * 0.10;
+	}
+
+	// Override the method to calculate the tax for electronics
+	@Override
+	public double calculateTax() {
+		// Calculate tax based on the price and tax rate
+		return getPrice() * TAX_RATE;
+	}
+
+	// Override the method to provide details about the tax
+	@Override
+	public String getTaxDetails() {
+		// Return the tax rate in percentage format
+		return "Tax Rate: " + (TAX_RATE * 100) + "%";
+	}
+}
